@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const links = [
   { href: "/papers", label: "证明" },
   { href: "/path", label: "路径" },
+  { href: "/daily", label: "每日" },
 ];
 
 export function SiteHeader() {

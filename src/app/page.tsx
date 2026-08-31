@@ -13,6 +13,7 @@ export default function Home() {
         </p>
         <div className="hero-actions">
           <Link href="/path">进入学习路径</Link>
+          <Link href="/daily">每日行动库</Link>
           <Link href="/papers">先看她证明了什么</Link>
         </div>
       </div>

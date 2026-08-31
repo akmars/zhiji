@@ -710,6 +710,267 @@
   color: var(--muted-foreground);
 }
 
+.daily-today-lede,
+.daily-library-lede {
+  margin: 0.6rem 0 0;
+  color: var(--muted-foreground);
+  line-height: 1.75;
+}
+
+.daily-library-lede a,
+.daily-today-lede a {
+  border-bottom: 1px solid var(--jade);
+}
+
+.daily-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.6rem;
+}
+
+.daily-stat {
+  padding: 0.85rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--jade) 25%, transparent);
+  background: color-mix(in srgb, var(--moss) 45%, transparent);
+  text-align: center;
+}
+
+.daily-stat-num {
+  display: block;
+  font-family: var(--font-mono), monospace;
+  font-size: 1.35rem;
+  color: var(--fog);
+}
+
+.daily-stat-label {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--muted-foreground);
+}
+
+.daily-actions-row {
+  margin-top: 0.85rem;
+}
+
+.daily-reset {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--jade);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--jade) 45%, transparent);
+  cursor: pointer;
+  padding: 0 0 0.15rem;
+}
+
+.daily-card {
+  margin-top: 1rem;
+  padding: 1.1rem 1rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--fog) 12%, transparent);
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+}
+
+.daily-card.is-highlight {
+  border-color: color-mix(in srgb, var(--jade) 55%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--jade) 18%, transparent);
+}
+
+.daily-card.is-done {
+  opacity: 0.72;
+}
+
+.daily-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.daily-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.75rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+}
+
+.daily-domain {
+  color: var(--jade);
+  letter-spacing: 0.1em;
+}
+
+.daily-duration {
+  color: var(--muted-foreground);
+}
+
+.daily-stage-link {
+  border-bottom: 1px solid var(--jade);
+  color: color-mix(in srgb, var(--fog) 85%, transparent);
+}
+
+.daily-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--fog);
+  background: color-mix(in srgb, var(--secondary) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--jade) 35%, transparent);
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+}
+
+.daily-check-box {
+  width: 0.65rem;
+  height: 0.65rem;
+  border: 1px solid var(--jade);
+  background: transparent;
+}
+
+.daily-card.is-done .daily-check-box {
+  background: var(--jade);
+}
+
+.daily-card-title {
+  margin: 0.75rem 0 0;
+  font-size: 1.22rem;
+  font-weight: 600;
+}
+
+.daily-block {
+  margin-top: 0.85rem;
+}
+
+.daily-block-label {
+  margin: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--jade);
+}
+
+.daily-block p:last-child {
+  margin: 0.35rem 0 0;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--fog) 86%, transparent);
+}
+
+.daily-card-grid {
+  display: grid;
+  gap: 0;
+}
+
+.daily-card-grid .daily-card {
+  margin-top: 0;
+  border-top: none;
+}
+
+.daily-card-grid .daily-card:first-child {
+  margin-top: 1rem;
+}
+
+.daily-week-rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.daily-week-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.82rem;
+  text-align: left;
+  color: inherit;
+  background: color-mix(in srgb, var(--secondary) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fog) 14%, transparent);
+  cursor: pointer;
+}
+
+.daily-week-chip.is-done {
+  border-color: var(--jade);
+  color: var(--jade);
+}
+
+.daily-week-chip-order {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  color: var(--jade);
+}
+
+.daily-domain-section {
+  margin-top: 2.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid color-mix(in srgb, var(--fog) 12%, transparent);
+}
+
+.daily-domain-head h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: 0.1em;
+}
+
+.daily-domain-head p {
+  margin: 0.45rem 0 0;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+.daily-domain-progress {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem !important;
+  color: var(--jade) !important;
+}
+
+.daily-week-block {
+  margin-top: 1.4rem;
+}
+
+.daily-week-block h3 {
+  margin: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  color: var(--jade);
+}
+
+.daily-week-list {
+  list-style: none;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.daily-week-list-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.45rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--fog) 10%, transparent);
+  color: color-mix(in srgb, var(--fog) 88%, transparent);
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.daily-week-list-btn.is-done {
+  color: var(--jade);
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in srgb, var(--jade) 55%, transparent);
+}
+
 @keyframes brand-in {
   from {
     opacity: 0;
@@ -769,6 +1030,10 @@
   .path-copy em {
     display: block;
     margin: 0.25rem 0 0;
+  }
+
+  .daily-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
