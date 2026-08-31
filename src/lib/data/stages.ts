@@ -1,7 +1,22 @@
+export type ResourceTag = "论文" | "讲义" | "百科" | "博客" | "视频" | "课程" | "教材";
+
+export type ResourceLink = {
+  title: string;
+  detail?: string;
+  href: string;
+  tag: ResourceTag;
+};
+
 export type Reading = {
   title: string;
   detail: string;
   href?: string;
+};
+
+export type Step = {
+  title: string;
+  body: string;
+  links: ResourceLink[];
 };
 
 export type QuizItem = {
@@ -21,7 +36,7 @@ export type Stage = {
   summary: string;
   already: string[];
   ideas: { name: string; text: string }[];
-  steps: { title: string; body: string }[];
+  steps: Step[];
   readings: Reading[];
   pitfalls: string[];
   quiz: QuizItem[];
@@ -59,18 +74,122 @@ export const stages: Stage[] = [
       {
         title: "用自己的话复述两个问题",
         body: "把“旋转针的面积”和“包含所有方向线段的集合有多厚”写成两句话，并标出它们不是同一个问题。前者允许针连续运动，后者只要求每个方向有一根静止的线段。",
+        links: [
+          {
+            title: "Wikipedia: Kakeya needle problem",
+            detail: "挂谷针问题：连续旋转一根针所需的最小面积。",
+            href: "https://en.wikipedia.org/wiki/Kakeya_set#Kakeya_needle_problem",
+            tag: "百科",
+          },
+          {
+            title: "Wikipedia: Kakeya set（Besicovitch 集）",
+            detail: "集合猜想：每个方向含单位线段的紧集必须有多“厚”。",
+            href: "https://en.wikipedia.org/wiki/Kakeya_set",
+            tag: "百科",
+          },
+          {
+            title: "MacTutor: Kakeya needle problem",
+            detail: "历史背景与 Pál、Kakeya 的早期结果。",
+            href: "https://mathshistory.st-andrews.ac.uk/HistTopics/Kakeya/",
+            tag: "百科",
+          },
+        ],
       },
       {
         title: "看一遍 Besicovitch 的 Perron 树直觉",
         body: "不要求写出严格构造。要看到：把许多细长三角形的底边叠在一起，方向可以铺满，面积却因重叠而变小。这就是“方向很多、体积很小”的原型。",
+        links: [
+          {
+            title: "Wikipedia: Besicovitch 的回答",
+            detail: "Perron 树 / 三角形叠加构造的文字说明与示意图。",
+            href: "https://en.wikipedia.org/wiki/Kakeya_set#Besicovitch's_answer",
+            tag: "百科",
+          },
+          {
+            title: "Tao 博客：Besicovitch 集与环面猜想",
+            detail: "用图示讲零测度 Kakeya 集如何出现，适合建立直觉。",
+            href: "https://terrytao.wordpress.com/2008/05/26/the-kakeya-conjecture-besicovitch-sets-and-the-ringroad-conjecture/",
+            tag: "博客",
+          },
+          {
+            title: "Numberphile: Kakeya Conjecture（视频）",
+            detail: "约 15 分钟，直观看到“方向铺满、面积任意小”。",
+            href: "https://www.youtube.com/watch?v=MBnnid-b58E",
+            tag: "视频",
+          },
+          {
+            title: "Łaba 整理的 Wolff 讲义 §1.2",
+            detail: "Besicovitch 构造的解析证明梗概，比原文易跟进。",
+            href: "https://www.math.ubc.ca/~ilaba/wolff/notes_html/node5.html",
+            tag: "讲义",
+          },
+          {
+            title: "Besicovitch (1928): On Kakeya's problem",
+            detail: "原始论文，Perron 树构造的第一手来源。",
+            href: "https://doi.org/10.1112/jlms/s1-3.1.49",
+            tag: "论文",
+          },
+        ],
       },
       {
         title: "记住二维已经解决、三维刚刚解决、高维仍开放",
         body: "Davies（1970s）证明平面 Kakeya 集维数是 2，证明很短。n ≥ 3 长期开放。2025 年 Wang–Zahl 解决 n = 3。n ≥ 4 的集合猜想、以及更强的 Kakeya 极大函数猜想，仍未解决。",
+        links: [
+          {
+            title: "Davies (1971): Some remarks on the Kakeya problem",
+            detail: "二维满维数证明，只有几页，建议手写一遍。",
+            href: "https://doi.org/10.1017/S0013091500011696",
+            tag: "论文",
+          },
+          {
+            title: "Wang–Zahl: Volume estimates… Kakeya in three dimensions",
+            detail: "2025 年正篇，宣布三维集合猜想成立。",
+            href: "https://arxiv.org/abs/2502.17655",
+            tag: "论文",
+          },
+          {
+            title: "Wolff (1999): Recent work connected with the Kakeya problem",
+            detail: "综述中 §1–2 讲清各维开放状况与历史下界。",
+            href: "https://arxiv.org/abs/math/0304146",
+            tag: "论文",
+          },
+          {
+            title: "Wikipedia: Kakeya conjecture",
+            detail: "各维已知结果一览表，便于对照记忆。",
+            href: "https://en.wikipedia.org/wiki/Kakeya_set#Kakeya_conjecture",
+            tag: "百科",
+          },
+        ],
       },
       {
         title: "读两篇面向公众的报道，再对照维基条目",
         body: "Quanta 2025 年 3 月的报道讲清了“针”和“维数”的差别；IAS 的短文说明这是他们系列论文的第三篇。读完应能向非数学朋友讲五分钟。",
+        links: [
+          {
+            title: "Quanta: Once-in-a-Century Proof Settles Math's Kakeya Conjecture",
+            detail: "2025-03-14 公众向综述，针问题 vs 维数猜想讲得很清楚。",
+            href: "https://www.quantamagazine.org/once-in-a-century-proof-settles-maths-kakeya-conjecture-20250314/",
+            tag: "博客",
+          },
+          {
+            title: "IAS: A Three-Dimensional Breakthrough",
+            detail: "黏性 → Assouad → 完整猜想三步路线图。",
+            href: "https://www.ias.edu/ideas/three-dimensional-breakthrough",
+            tag: "博客",
+          },
+          {
+            title: "Quanta: A Long-Sought Proof…（背景报道）",
+            detail: "2024 年 Assouad 维数结果出炉时的报道，可作铺垫。",
+            href: "https://www.quantamagazine.org/a-long-sought-proof-shows-how-many-directions-a-set-can-point-20240626/",
+            tag: "博客",
+          },
+          {
+            title: "Wikipedia: Kakeya set（中文概念对照）",
+            detail: "读完报道后对照术语：Kakeya 集、维数猜想、极大函数。",
+            href: "https://en.wikipedia.org/wiki/Kakeya_set",
+            tag: "百科",
+          },
+        ],
       },
     ],
     readings: [
@@ -146,14 +265,74 @@ export const stages: Stage[] = [
       {
         title: "用一本实变把测度学完，而不是同时开三本",
         body: "Stein–Shakarchi《Real Analysis》前四章，或周民强/张恭庆实变对应章节。目标：Lebesgue 积分、Fubini、Lᵖ、控制收敛。习题要做覆盖引理和 Cantor 集计算。",
+        links: [
+          {
+            title: "Stein & Shakarchi, Real Analysis（Princeton）",
+            detail: "Ch. 1–4：测度、积分、微分、Lᵖ 空间。",
+            href: "https://press.princeton.edu/books/paperback/9780691117524/real-analysis",
+            tag: "教材",
+          },
+          {
+            title: "Stein & Shakarchi, Real Analysis（PDF 预览）",
+            detail: "官方样章，可先读 Ch. 1 测度论入门。",
+            href: "https://www.math.stonybrook.edu/~bishop/345/345_Fall_2019/Stein_Shakarchi_Real_Analysis.pdf",
+            tag: "教材",
+          },
+          {
+            title: "MIT 18.100B: Real Analysis 课程页",
+            detail: "配套讲义与习题，练覆盖引理的好材料。",
+            href: "https://ocw.mit.edu/courses/18-100b-real-analysis-fall-2023/",
+            tag: "课程",
+          },
+        ],
       },
       {
         title: "自己证明：单位正方形里可放进测度小于 ε 的“很多方向的短线段”并不矛盾",
         body: "先在离散模型里做：N 个长度为 1、宽度 1/N 的细长矩形，若完全重叠则面积约 1/N，若完全分开则面积约 1。后面的管估计就是在给“重叠能有多严重”一个上界。",
+        links: [
+          {
+            title: "Tao: An epsilon of room, Vol. I",
+            detail: "“分析学家怎么写估计”——覆盖、双计数的基本写法。",
+            href: "https://terrytao.wordpress.com/books/an-epsilon-of-room-pages-from-year-three-of-a-mathematical-blog/",
+            tag: "教材",
+          },
+          {
+            title: "Wolff 讲义 §2: Kakeya 问题与管",
+            detail: "δ-管体积估计的第一行就是这类重叠计数。",
+            href: "https://www.math.ubc.ca/~ilaba/wolff/notes_html/node6.html",
+            tag: "讲义",
+          },
+          {
+            title: "Wikipedia: Lebesgue measure",
+            detail: "回顾可数个矩形覆盖的定义，与 Kakeya 零测度例子衔接。",
+            href: "https://en.wikipedia.org/wiki/Lebesgue_measure",
+            tag: "百科",
+          },
+        ],
       },
       {
         title: "傅里叶只读到 Plancherel 和 Schwarz 空间",
         body: "Stein–Shakarchi《Fourier Analysis》前三章足够。记下：光滑函数衰减快，特征函数的傅里叶变换衰减慢——这已经能解释为什么 Kakeya 会限制傅里叶乘子。",
+        links: [
+          {
+            title: "Stein & Shakarchi, Fourier Analysis（Princeton）",
+            detail: "Ch. 1–3：级数、变换、高斯与 Plancherel。",
+            href: "https://press.princeton.edu/books/paperback/9780691113847/fourier-analysis",
+            tag: "教材",
+          },
+          {
+            title: "Tao 博客：Fefferman 盘乘子与 Besicovitch 集",
+            detail: "为什么“很薄的 Kakeya 集”会打穿傅里叶乘子有界性。",
+            href: "https://terrytao.wordpress.com/2008/05/26/the-kakeya-conjecture-besicovitch-sets-and-the-ringroad-conjecture/",
+            tag: "博客",
+          },
+          {
+            title: "Wikipedia: Fourier transform",
+            detail: "查 Plancherel 定理与衰减速度的速查表。",
+            href: "https://en.wikipedia.org/wiki/Fourier_transform",
+            tag: "百科",
+          },
+        ],
       },
     ],
     readings: [
@@ -231,14 +410,74 @@ export const stages: Stage[] = [
       {
         title: "手算三个例子",
         body: "三分康托集、单位正方形的边界、Besicovitch 不可微函数图像（或 Weierstrass 函数的维数直觉）。写出 dim_H 与盒维数何时相等、何时不等。",
+        links: [
+          {
+            title: "Wikipedia: Hausdorff dimension",
+            detail: "定义与三分康托集 dim_H = log 2 / log 3 的计算。",
+            href: "https://en.wikipedia.org/wiki/Hausdorff_dimension",
+            tag: "百科",
+          },
+          {
+            title: "Wikipedia: Minkowski–Bouligand dimension",
+            detail: "盒维数定义，与豪斯多夫维数对照。",
+            href: "https://en.wikipedia.org/wiki/Minkowski%E2%80%93Bouligand_dimension",
+            tag: "百科",
+          },
+          {
+            title: "Falconer, Fractal Geometry（出版社页）",
+            detail: "Ch. 2–3 有康托集、边界、经典分形的手算例题。",
+            href: "https://www.wiley.com/en-us/Fractal+Geometry%3A+Mathematical+Foundations+and+Applications%2C+3rd+Edition-p-9781119990354",
+            tag: "教材",
+          },
+        ],
       },
       {
         title: "把 Kakeya 猜想翻译成覆盖语言",
         body: "若 K 含有每个方向的单位线段，则对任意 δ，K 的 δ-邻域包含约 δ⁻² 根三维 δ-管（方向 δ-分离）。猜想说这些管的并不能比 δ^ε 更小。",
+        links: [
+          {
+            title: "Wolff (1999) 综述 §3",
+            detail: "δ-管、方向分离与维数下界的标准表述。",
+            href: "https://arxiv.org/abs/math/0304146",
+            tag: "论文",
+          },
+          {
+            title: "Guth: Introduction to the Kakeya conjecture proof",
+            detail: "现代语言复述“管覆盖 → 维数”的逻辑链。",
+            href: "https://arxiv.org/abs/2505.07695",
+            tag: "讲义",
+          },
+          {
+            title: "Wikipedia: Kakeya conjecture",
+            detail: "闵可夫斯基维数表述与已知下界表。",
+            href: "https://en.wikipedia.org/wiki/Kakeya_set#Kakeya_conjecture",
+            tag: "百科",
+          },
+        ],
       },
       {
         title: "读 Mattila 或 Falconer 的一章，停在投影定理之前",
         body: "目标不是成为 GMT 专家，而是以后看到 “δ-网、能量积分、Frostman 测度” 不慌。Marstrand 投影定理可以读陈述，证明放到 Furstenberg 那一关。",
+        links: [
+          {
+            title: "Mattila, Geometry of Sets and Measures（Cambridge）",
+            detail: "Ch. 4–5：豪斯多夫测度、Frostman 引理。",
+            href: "https://www.cambridge.org/core/books/geometry-of-sets-and-measures-in-euclidean-spaces/0521655951",
+            tag: "教材",
+          },
+          {
+            title: "Wikipedia: Frostman's lemma",
+            detail: "维数 ↔ 能量有限测度，后面 Falconer/Furstenberg 天天用。",
+            href: "https://en.wikipedia.org/wiki/Frostman%27s_lemma",
+            tag: "百科",
+          },
+          {
+            title: "Wang–Zahl: Assouad dimension of Kakeya sets in R³（引言）",
+            detail: "定义 1.1–1.3：三种维数在 Kakeya 语境下的应用题。",
+            href: "https://arxiv.org/abs/2401.12337",
+            tag: "论文",
+          },
+        ],
       },
     ],
     readings: [
@@ -311,14 +550,74 @@ export const stages: Stage[] = [
       {
         title: "读 Wolff 1999 综述的前半，画出问题图",
         body: "纸上写下四个节点：Kakeya 集合、Kakeya 极大函数、限制猜想、局部平滑，并标出已知的蕴含方向。限制 ⇒ Kakeya 维数；局部平滑与光锥限制/平方函数相关。",
+        links: [
+          {
+            title: "Wolff (1999): Recent work connected with the Kakeya problem",
+            detail: "前半部分的问题地图，这一关的主阅读。",
+            href: "https://arxiv.org/abs/math/0304146",
+            tag: "论文",
+          },
+          {
+            title: "Tao: Restriction and Kakeya phenomena",
+            detail: "讲义版蕴含关系图，与 Wolff 对照阅读。",
+            href: "https://arxiv.org/abs/math/0311181",
+            tag: "讲义",
+          },
+          {
+            title: "Łaba 整理的 Wolff 讲义目录",
+            detail: "按章节跟进 Kakeya、限制、局部平滑三条线。",
+            href: "https://www.math.ubc.ca/~ilaba/wolff/",
+            tag: "讲义",
+          },
+        ],
       },
       {
         title: "搞懂 Fefferman 盘乘子反例的一句话版本",
         body: "若 Kakeya 集可以很薄，则把傅里叶乘子做成“许多方向的薄扇区”时，Lᵖ 有界性会坏掉。细节可看 Stein《Harmonic Analysis》或 Tao 的笔记，第一遍只需要因果链。",
+        links: [
+          {
+            title: "Fefferman (1971): The multiplier problem for the ball",
+            detail: "原始反例论文，Besicovitch 集进入调和分析的起点。",
+            href: "https://doi.org/10.2307/1970827",
+            tag: "论文",
+          },
+          {
+            title: "Tao 博客：Besicovitch 集与盘乘子",
+            detail: "一句话版因果链：薄 Kakeya → 乘子无界。",
+            href: "https://terrytao.wordpress.com/2008/05/26/the-kakeya-conjecture-besicovitch-sets-and-the-ringroad-conjecture/",
+            tag: "博客",
+          },
+          {
+            title: "Stein, Harmonic Analysis（Princeton）",
+            detail: "Ch. VIII 讨论乘子与 Besicovitch 型构造。",
+            href: "https://press.princeton.edu/books/hardcover/9780691087780/harmonic-analysis",
+            tag: "教材",
+          },
+        ],
       },
       {
         title: "知道波包（wave packet）长什么样",
         body: "频率落在曲面上的一小块，空间上就是一根指向法向的管。Kakeya 估计管的重叠，限制估计波包的叠加——同一几何，不同振荡。",
+        links: [
+          {
+            title: "Guth: Wave packets 讲义（MIT）",
+            detail: "波包分解的现代标准介绍，配示意图。",
+            href: "https://arxiv.org/abs/1808.04261",
+            tag: "讲义",
+          },
+          {
+            title: "Guth–Wang–Zhang: A sharp square function estimate for the cone",
+            detail: "引言看图：光锥上的波包如何堆成管。",
+            href: "https://arxiv.org/abs/1909.10693",
+            tag: "论文",
+          },
+          {
+            title: "Wikipedia: Wave packet",
+            detail: "物理直觉：局域在空间的波 ↔ 局域在频率的谱。",
+            href: "https://en.wikipedia.org/wiki/Wave_packet",
+            tag: "百科",
+          },
+        ],
       },
     ],
     readings: [
@@ -398,18 +697,104 @@ export const stages: Stage[] = [
       {
         title: "自己写出 Davies 的二维证明",
         body: "不看书，用 Cauchy–Schwarz 对特征函数做双计数。如果写不出来，说明第 01 关的尺子还没拿稳。",
+        links: [
+          {
+            title: "Davies (1971): Some remarks on the Kakeya problem",
+            detail: "原文只有几页，写完再对照。",
+            href: "https://doi.org/10.1017/S0013091500011696",
+            tag: "论文",
+          },
+          {
+            title: "Wolff 讲义 §2.3: Davies 定理",
+            detail: "现代语言的复述，适合核对你的双计数。",
+            href: "https://www.math.ubc.ca/~ilaba/wolff/notes_html/node8.html",
+            tag: "讲义",
+          },
+          {
+            title: "Guth: Introduction to the Kakeya proof §2",
+            detail: "2025 导读里的二维证明速写。",
+            href: "https://arxiv.org/abs/2505.07695",
+            tag: "讲义",
+          },
+        ],
       },
       {
         title: "用图解释 Wolff 发刷为什么给出 5/2",
         body: "一根中心管，周围的管像刷毛。每根刷毛与中心管相交一小段，刷毛之间在远离中心处分开。把体积加起来，指数停在 5/2。Guth 的导读里有现代语言的复述。",
+        links: [
+          {
+            title: "Wolff (1995): Improved bound for Kakeya type maximal functions",
+            detail: "发刷论证原文，三维 5/2 下界的来源。",
+            href: "https://doi.org/10.2307/2152806",
+            tag: "论文",
+          },
+          {
+            title: "Guth: Introduction to the Kakeya proof",
+            detail: "发刷、bush、hairbrush 的现代图解。",
+            href: "https://arxiv.org/abs/2505.07695",
+            tag: "讲义",
+          },
+          {
+            title: "Wolff 讲义 §4: Hairbrush 方法",
+            detail: "Łaba 整理版，配体积计算的逐步推导。",
+            href: "https://www.math.ubc.ca/~ilaba/wolff/notes_html/node12.html",
+            tag: "讲义",
+          },
+        ],
       },
       {
         title: "读 Dvir 的有限域证明（短）",
         body: "Zhao 的《Polynomial Method》讲义或 Guth 的多项式方法课。目的是换胃口：欧氏 Kakeya 需要的是另一套多尺度结构，不是更高次的多项式。",
+        links: [
+          {
+            title: "Dvir (2009): On the size of Kakeya sets in finite fields",
+            detail: "多项式方法的经典展示，证明短而完整。",
+            href: "https://arxiv.org/abs/0803.2336",
+            tag: "论文",
+          },
+          {
+            title: "Zhao: Polynomial Method in Combinatorics（讲义）",
+            detail: "Dvir 定理的友好讲解，含有限域背景。",
+            href: "https://www.math.ucla.edu/~zkoppelman/polynomial_method_notes.pdf",
+            tag: "讲义",
+          },
+          {
+            title: "Guth: Polynomial Methods in Combinatorics（课程）",
+            detail: "MIT 18.217 课程页，换一套技术视角。",
+            href: "https://ocw.mit.edu/courses/18-217-combinatorial-theory-introduction-to-graph-theory-extremal-combinatorics-and-probabilistic-method-fall-2014/",
+            tag: "课程",
+          },
+        ],
       },
       {
         title: "精读 Katz–Tao 纲领的非技术描述",
         body: "Tao 博客上的 outline，加上 Guth 2025 导读里“Katz–Tao program”那一节。记下三步：识别黏性、证明黏性满维数、把一般情形约化到黏性。前两步王虹与 Zahl 在 2022 年做完，第三步直到 2025 年才打通。",
+        links: [
+          {
+            title: "Tao 博客：Kakeya 与 multilinear Kakeya",
+            detail: "黏性纲领的三步 outline，非技术版。",
+            href: "https://terrytao.wordpress.com/2014/05/07/the-kakeya-conjecture-and-the-multilinear-kakeya-conjecture/",
+            tag: "博客",
+          },
+          {
+            title: "Katz–Łaba–Tao (1999): Improved bound for Minkowski dimension",
+            detail: "黏性、平面性、颗粒的原始论文。",
+            href: "https://doi.org/10.1090/S0894-0347-99-00294-1",
+            tag: "论文",
+          },
+          {
+            title: "Guth: Introduction to the Kakeya proof",
+            detail: "2025 导读专节对照 Katz–Tao program。",
+            href: "https://arxiv.org/abs/2505.07695",
+            tag: "讲义",
+          },
+          {
+            title: "Wang–Zahl: Sticky Kakeya sets in three dimensions",
+            detail: "2022 年完成纲领第二步（黏性定理）。",
+            href: "https://arxiv.org/abs/2210.09581",
+            tag: "论文",
+          },
+        ],
       },
     ],
     readings: [
@@ -483,18 +868,98 @@ export const stages: Stage[] = [
       {
         title: "读 Guth–Wang–Zhang 引言 + 定理链条，不读完所有引理",
         body: "目标：看到“两个物理尺度的归纳”是怎么设的。局部平滑是菲尔兹奖引文的第一句，值得知道它的形状。",
+        links: [
+          {
+            title: "Guth–Wang–Zhang: A sharp square function estimate for the cone",
+            detail: "Annals 2020，引言与定理 1.1 链条。",
+            href: "https://arxiv.org/abs/1909.10693",
+            tag: "论文",
+          },
+          {
+            title: "Wikipedia: Local smoothing conjecture",
+            detail: "波动方程局部平滑猜想的陈述与背景。",
+            href: "https://en.wikipedia.org/wiki/Local_smoothing",
+            tag: "百科",
+          },
+          {
+            title: "Guth: Lecture notes on decoupling",
+            detail: "光锥 decoupling 与局部平滑的现代视角。",
+            href: "https://arxiv.org/abs/1808.04261",
+            tag: "讲义",
+          },
+        ],
       },
       {
         title: "读 Guth–Iosevich–Ou–Wang 的 Falconer 引言",
         body: "维数 5/4 从哪里来？refined decoupling 或波包如何变成距离。不必复现全部数值。",
+        links: [
+          {
+            title: "Guth–Iosevich–Ou–Wang: Falconer distance problem",
+            detail: "Invent. Math.，平面距离集 5/4 维数突破。",
+            href: "https://arxiv.org/abs/1808.09346",
+            tag: "论文",
+          },
+          {
+            title: "Wikipedia: Falconer's distance set conjecture",
+            detail: "问题陈述：距离集维数至少 ⌈d/2⌉。",
+            href: "https://en.wikipedia.org/wiki/Falconer%27s_distance_set_conjecture",
+            tag: "百科",
+          },
+          {
+            title: "Tao 博客：Falconer 距离猜想进展",
+            detail: "公众向解释 5/4 结果的意义。",
+            href: "https://terrytao.wordpress.com/2018/11/19/falconer-distance-set-conjecture/",
+            tag: "博客",
+          },
+        ],
       },
       {
         title: "精读 Ren–Wang Furstenberg 的第一节",
         body: "这是本关最重要的一篇。画出他们的二分：sticky / semi-well-spaced，以及为什么二分之后可以分别击破。把这张图留到下一关对照 Kakeya。",
+        links: [
+          {
+            title: "Ren–Wang: Furstenberg sets estimate in the plane",
+            detail: "第一节的结构二分，Kakeya 约化的样板。",
+            href: "https://arxiv.org/abs/2308.08819",
+            tag: "论文",
+          },
+          {
+            title: "Orponen–Shmerkin: Projections and dimension",
+            detail: "黏性 Furstenberg 情形的关键输入。",
+            href: "https://arxiv.org/abs/2103.15447",
+            tag: "论文",
+          },
+          {
+            title: "Wikipedia: Furstenberg set",
+            detail: "Furstenberg 集定义，与 Kakeya 的“神似”之处。",
+            href: "https://en.wikipedia.org/wiki/Furstenberg_set",
+            tag: "百科",
+          },
+        ],
       },
       {
         title: "可选：扫帚论文的几何段落",
         body: "若你更关心限制而非 GMT，读 Duke 论文中定义 broom 的那一节。若你的目标只是 Kakeya，可以只记结论。",
+        links: [
+          {
+            title: "Wang: A restriction estimate in R³ using brooms",
+            detail: "扫帚几何定义与 p > 3+3/13 限制突破。",
+            href: "https://arxiv.org/abs/1802.04312",
+            tag: "论文",
+          },
+          {
+            title: "Bourgain–Demeter: Decoupling for the moment curve",
+            detail: "限制理论的 decoupling 背景，扫帚论文的技术土壤。",
+            href: "https://arxiv.org/abs/1403.1465",
+            tag: "论文",
+          },
+          {
+            title: "Guth: Introduction to decoupling",
+            detail: "若不懂 decoupling，先读这篇再回扫帚论文。",
+            href: "https://arxiv.org/abs/1808.04261",
+            tag: "讲义",
+          },
+        ],
       },
     ],
     readings: [
@@ -575,22 +1040,128 @@ export const stages: Stage[] = [
       {
         title: "第零遍：只读三篇的第一页和定理编号",
         body: "写出一张卡片：每篇假设是什么、结论是什么、下一篇用了上一篇的哪一条。没有这张卡片不要往第 20 页走。",
+        links: [
+          {
+            title: "Wang–Zahl: Sticky Kakeya sets in three dimensions",
+            detail: "三部曲第一篇，arXiv:2210.09581。",
+            href: "https://arxiv.org/abs/2210.09581",
+            tag: "论文",
+          },
+          {
+            title: "Wang–Zahl: Assouad dimension of Kakeya sets in R³",
+            detail: "第二篇，arXiv:2401.12337。",
+            href: "https://arxiv.org/abs/2401.12337",
+            tag: "论文",
+          },
+          {
+            title: "Wang–Zahl: Volume estimates… Kakeya in three dimensions",
+            detail: "正篇，arXiv:2502.17655。",
+            href: "https://arxiv.org/abs/2502.17655",
+            tag: "论文",
+          },
+          {
+            title: "Guth: Outline of the Wang–Zahl proof",
+            detail: "伴读提纲，帮你填那张卡片。",
+            href: "https://arxiv.org/abs/2508.05475",
+            tag: "讲义",
+          },
+        ],
       },
       {
         title: "黏性篇：跟着 Katz–Tao 的三步走，标出“他们多做了什么”",
         body: "Guth 说他们大致按大纲走，但处理了严重的技术问题。你的笔记应区分：哪一段是纲领里已有的和积结构，哪一段是误差累积、粒状结构或最大函数。",
+        links: [
+          {
+            title: "Wang–Zahl: Sticky Kakeya（全文）",
+            detail: "对照 Katz–Tao 三步，标出技术增量。",
+            href: "https://arxiv.org/abs/2210.09581",
+            tag: "论文",
+          },
+          {
+            title: "Tao 博客：黏性 Kakeya outline",
+            detail: "纲领原文，读黏性篇时放在手边。",
+            href: "https://terrytao.wordpress.com/2014/05/07/the-kakeya-conjecture-and-the-multilinear-kakeya-conjecture/",
+            tag: "博客",
+          },
+          {
+            title: "Guth: Introduction to the Kakeya proof",
+            detail: "2025 导读解释黏性定理在整体证明中的位置。",
+            href: "https://arxiv.org/abs/2505.07695",
+            tag: "讲义",
+          },
+        ],
       },
       {
         title: "Assouad 篇：搞清“两个分离尺度 δ < ρ”",
         body: "定理说 Kakeya 集的 δ-邻域几乎和 ρ-邻域一样大。这意味着集合不能在所有尺度上都突然变稀——而这正是豪斯多夫维数仍可能作假的方式。把这一点和第三篇要对付的“稀疏尺度”对照。",
+        links: [
+          {
+            title: "Wang–Zahl: Assouad dimension（全文）",
+            detail: "定理 1.2 与两个尺度 δ < ρ 的核心论证。",
+            href: "https://arxiv.org/abs/2401.12337",
+            tag: "论文",
+          },
+          {
+            title: "Wikipedia: Assouad dimension",
+            detail: "定义速查：局部均匀的盒维数下界。",
+            href: "https://en.wikipedia.org/wiki/Assouad_dimension",
+            tag: "百科",
+          },
+          {
+            title: "IAS: Three-Dimensional Breakthrough",
+            detail: "Assouad 结果在公众报道中的解释。",
+            href: "https://www.ias.edu/ideas/three-dimensional-breakthrough",
+            tag: "博客",
+          },
+        ],
       },
       {
         title: "正篇：先读结构定理，再读归纳",
         body: "127 页的主干是：取紧的管族必须在许多尺度上可被满足凸 Wolff 公理的粗管覆盖（近似黏性），再用推广的黏性定理把损失打到 0。Guth 的 Outline（2508.05475）就是为这一段写的，请对照着读。",
+        links: [
+          {
+            title: "Wang–Zahl: Volume estimates（全文）",
+            detail: "127 页正篇，结构定理是主干。",
+            href: "https://arxiv.org/abs/2502.17655",
+            tag: "论文",
+          },
+          {
+            title: "Guth: Outline of the Wang–Zahl proof",
+            detail: "专为正篇写的伴读，逐节对照。",
+            href: "https://arxiv.org/abs/2508.05475",
+            tag: "讲义",
+          },
+          {
+            title: "Quanta: Once-in-a-Century Proof",
+            detail: "公众向总结，帮你保持全局视角。",
+            href: "https://www.quantamagazine.org/once-in-a-century-proof-settles-maths-kakeya-conjecture-20250314/",
+            tag: "博客",
+          },
+        ],
       },
       {
         title: "把主定理翻译成集合语言，检查你是否真懂",
         body: "闭卷写出：为什么方向分离的管自动满足凸 Wolff 公理；为什么体积下界 |∪T| ≳ δ^ε |T| |T| 能推出 dim = 3。写不出来就还在读引言。",
+        links: [
+          {
+            title: "Guth: Outline §主定理的集合翻译",
+            detail: "凸 Wolff 公理与体积下界的白话版。",
+            href: "https://arxiv.org/abs/2508.05475",
+            tag: "讲义",
+          },
+          {
+            title: "Guth: Introduction to the Kakeya proof",
+            detail: "自检用：能否不看笔记复述证明链。",
+            href: "https://arxiv.org/abs/2505.07695",
+            tag: "讲义",
+          },
+          {
+            title: "Wolff 讲义：δ-管与维数",
+            detail: "回顾体积估计如何推出维数下界。",
+            href: "https://www.math.ubc.ca/~ilaba/wolff/notes_html/node6.html",
+            tag: "讲义",
+          },
+        ],
       },
     ],
     readings: [
@@ -671,14 +1242,74 @@ export const stages: Stage[] = [
       {
         title: "用精简证明把约化再写一遍",
         body: "对着 2601.14411，尝试在 10 页以内写出“从黏性定理推出体积估计”的骨架（允许引用黏性定理当黑盒）。这是检验真懂的方法。",
+        links: [
+          {
+            title: "Guth–Wang–Zahl: A streamlined proof",
+            detail: "arXiv:2601.14411，第二遍证明的首选。",
+            href: "https://arxiv.org/abs/2601.14411",
+            tag: "论文",
+          },
+          {
+            title: "Guth: Outline of the Wang–Zahl proof",
+            detail: "与精简版对照，看哪些技术被拿掉。",
+            href: "https://arxiv.org/abs/2508.05475",
+            tag: "讲义",
+          },
+          {
+            title: "Wang–Zahl: Sticky Kakeya（黑盒输入）",
+            detail: "精简证明仍依赖的黏性定理。",
+            href: "https://arxiv.org/abs/2210.09581",
+            tag: "论文",
+          },
+        ],
       },
       {
         title: "准备一个 50 分钟报告",
         body: "听众假设只懂 Davies 和发刷。材料：Bourbaki + 你的骨架。如果讲不下来，说明还在依赖论文的章节标题。",
+        links: [
+          {
+            title: "Guth: The Kakeya conjecture, after Wang and Zahl（Bourbaki）",
+            detail: "arXiv:2604.03416，50 分钟报告的主素材。",
+            href: "https://arxiv.org/abs/2604.03416",
+            tag: "讲义",
+          },
+          {
+            title: "Guth: Introduction to the proof of the Kakeya conjecture",
+            detail: "配图导读，适合做成幻灯片。",
+            href: "https://arxiv.org/abs/2505.07695",
+            tag: "讲义",
+          },
+          {
+            title: "Quanta: Once-in-a-Century Proof",
+            detail: "开场用的公众向故事线。",
+            href: "https://www.quantamagazine.org/once-in-a-century-proof-settles-maths-kakeya-conjecture-20250314/",
+            tag: "博客",
+          },
+        ],
       },
       {
         title: "列一张“证明没有覆盖什么”的清单",
         body: "集合 vs 极大函数；R³ vs Rⁿ；特征函数 vs 波包振荡。这张清单决定你下一步读限制还是读高维 GMT。",
+        links: [
+          {
+            title: "Wang–Wu: Restriction estimates using decoupling",
+            detail: "集合猜想证完后，限制还差什么。",
+            href: "https://arxiv.org/abs/2411.08871",
+            tag: "论文",
+          },
+          {
+            title: "Wolff (1999) 综述：开放问题",
+            detail: "极大函数、高维 Kakeya 仍开放的经典列表。",
+            href: "https://arxiv.org/abs/math/0304146",
+            tag: "论文",
+          },
+          {
+            title: "Wikipedia: Kakeya conjecture",
+            detail: "各维已知结果与未解决问题对照表。",
+            href: "https://en.wikipedia.org/wiki/Kakeya_set#Kakeya_conjecture",
+            tag: "百科",
+          },
+        ],
       },
     ],
     readings: [

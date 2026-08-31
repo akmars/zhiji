@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { DeltoidNeedle } from "@/components/deltoid-needle";
 import { ProgressToggle } from "@/components/progress-toggle";
 import { StageQuiz } from "@/components/stage-quiz";
+import { StepResources } from "@/components/step-resources";
 import { getStage, neighbors, stages } from "@/lib/data/stages";
 
 type Props = {
@@ -67,6 +68,7 @@ export default async function StagePage({ params }: Props) {
           <li key={step.title}>
             <h3>{step.title}</h3>
             <p>{step.body}</p>
+            <StepResources links={step.links} />
           </li>
         ))}
       </ol>

@@ -534,6 +534,61 @@
   border-bottom: 1px solid var(--jade);
 }
 
+.step-resources {
+  margin-top: 0.85rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid color-mix(in srgb, var(--jade) 28%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--moss) 55%, transparent);
+}
+
+.step-resources-label {
+  margin: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--jade);
+}
+
+.step-resources ul {
+  list-style: none;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.step-resource-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.45rem 0.7rem;
+}
+
+.step-resource-head a {
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--jade);
+}
+
+.resource-tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  padding: 0.12rem 0.38rem;
+  border: 1px solid color-mix(in srgb, var(--jade) 45%, transparent);
+  color: var(--jade);
+  border-radius: var(--radius-sm);
+}
+
+.step-resources li p {
+  margin: 0.3rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+
 .pager {
   display: flex;
   justify-content: space-between;
